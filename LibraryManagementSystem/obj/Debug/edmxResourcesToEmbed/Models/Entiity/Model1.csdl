@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbLibModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblAuthor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblBook" Relationship="Self.FK_TblBook_TblAuthor" FromRole="TblAuthor" ToRole="TblBook" />
+  </EntityType>
+  <EntityType Name="TblBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="Byte" />
+    <Property Name="Author" Type="Int32" />
+    <Property Name="Date" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="Publisher" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Page" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="Boolean" />
+    <NavigationProperty Name="TblAuthor" Relationship="Self.FK_TblBook_TblAuthor" FromRole="TblBook" ToRole="TblAuthor" />
+    <NavigationProperty Name="TblCategory" Relationship="Self.FK_TblBook_TblCategory" FromRole="TblBook" ToRole="TblCategory" />
+    <NavigationProperty Name="TblTransactions" Relationship="Self.FK_TblTransactions_TblBook" FromRole="TblBook" ToRole="TblTransactions" />
+  </EntityType>
+  <EntityType Name="TblCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblBook" Relationship="Self.FK_TblBook_TblCategory" FromRole="TblCategory" ToRole="TblBook" />
+  </EntityType>
+  <EntityType Name="TblCezalar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uye" Type="Int32" />
+    <Property Name="Baslangic" Type="DateTime" Precision="0" />
+    <Property Name="Bitis" Type="DateTime" Precision="0" />
+    <Property Name="Para" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Hareket" Type="Int32" />
+    <NavigationProperty Name="TblMembers" Relationship="Self.FK_TblCezalar_TblMembers" FromRole="TblCezalar" ToRole="TblMembers" />
+    <NavigationProperty Name="TblTransactions" Relationship="Self.FK_TblCezalar_TblTransactions" FromRole="TblCezalar" ToRole="TblTransactions" />
+  </EntityType>
+  <EntityType Name="TblKasa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tutar" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="TblMembers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="School" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TblCezalar" Relationship="Self.FK_TblCezalar_TblMembers" FromRole="TblMembers" ToRole="TblCezalar" />
+    <NavigationProperty Name="TblTransactions" Relationship="Self.FK_TblTransactions_TblMembers" FromRole="TblMembers" ToRole="TblTransactions" />
+  </EntityType>
+  <EntityType Name="TblStaff">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Staff" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TblTransactions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Book" Type="Int32" />
+    <Property Name="Member" Type="Int32" />
+    <Property Name="Staff" Type="Int32" />
+    <Property Name="PurchaseDate" Type="Int32" />
+    <Property Name="ReturnDate" Type="Int32" />
+    <NavigationProperty Name="TblBook" Relationship="Self.FK_TblTransactions_TblBook" FromRole="TblTransactions" ToRole="TblBook" />
+    <NavigationProperty Name="TblCezalar" Relationship="Self.FK_TblCezalar_TblTransactions" FromRole="TblTransactions" ToRole="TblCezalar" />
+    <NavigationProperty Name="TblMembers" Relationship="Self.FK_TblTransactions_TblMembers" FromRole="TblTransactions" ToRole="TblMembers" />
+  </EntityType>
+  <Association Name="FK_TblBook_TblAuthor">
+    <End Role="TblAuthor" Type="Self.TblAuthor" Multiplicity="0..1" />
+    <End Role="TblBook" Type="Self.TblBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblAuthor">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBook">
+        <PropertyRef Name="Author" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblBook_TblCategory">
+    <End Role="TblCategory" Type="Self.TblCategory" Multiplicity="0..1" />
+    <End Role="TblBook" Type="Self.TblBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblBook">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblTransactions_TblBook">
+    <End Role="TblBook" Type="Self.TblBook" Multiplicity="0..1" />
+    <End Role="TblTransactions" Type="Self.TblTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblBook">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblTransactions">
+        <PropertyRef Name="Book" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblCezalar_TblMembers">
+    <End Role="TblMembers" Type="Self.TblMembers" Multiplicity="0..1" />
+    <End Role="TblCezalar" Type="Self.TblCezalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMembers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCezalar">
+        <PropertyRef Name="Uye" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblCezalar_TblTransactions">
+    <End Role="TblTransactions" Type="Self.TblTransactions" Multiplicity="0..1" />
+    <End Role="TblCezalar" Type="Self.TblCezalar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblTransactions">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblCezalar">
+        <PropertyRef Name="Hareket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblTransactions_TblMembers">
+    <End Role="TblMembers" Type="Self.TblMembers" Multiplicity="0..1" />
+    <End Role="TblTransactions" Type="Self.TblTransactions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMembers">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TblTransactions">
+        <PropertyRef Name="Member" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbLibEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TblAuthor" EntityType="Self.TblAuthor" />
+    <EntitySet Name="TblBook" EntityType="Self.TblBook" />
+    <EntitySet Name="TblCategory" EntityType="Self.TblCategory" />
+    <EntitySet Name="TblCezalar" EntityType="Self.TblCezalar" />
+    <EntitySet Name="TblKasa" EntityType="Self.TblKasa" />
+    <EntitySet Name="TblMembers" EntityType="Self.TblMembers" />
+    <EntitySet Name="TblStaff" EntityType="Self.TblStaff" />
+    <EntitySet Name="TblTransactions" EntityType="Self.TblTransactions" />
+    <AssociationSet Name="FK_TblBook_TblAuthor" Association="Self.FK_TblBook_TblAuthor">
+      <End Role="TblAuthor" EntitySet="TblAuthor" />
+      <End Role="TblBook" EntitySet="TblBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblBook_TblCategory" Association="Self.FK_TblBook_TblCategory">
+      <End Role="TblCategory" EntitySet="TblCategory" />
+      <End Role="TblBook" EntitySet="TblBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblTransactions_TblBook" Association="Self.FK_TblTransactions_TblBook">
+      <End Role="TblBook" EntitySet="TblBook" />
+      <End Role="TblTransactions" EntitySet="TblTransactions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblCezalar_TblMembers" Association="Self.FK_TblCezalar_TblMembers">
+      <End Role="TblMembers" EntitySet="TblMembers" />
+      <End Role="TblCezalar" EntitySet="TblCezalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblCezalar_TblTransactions" Association="Self.FK_TblCezalar_TblTransactions">
+      <End Role="TblTransactions" EntitySet="TblTransactions" />
+      <End Role="TblCezalar" EntitySet="TblCezalar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblTransactions_TblMembers" Association="Self.FK_TblTransactions_TblMembers">
+      <End Role="TblMembers" EntitySet="TblMembers" />
+      <End Role="TblTransactions" EntitySet="TblTransactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

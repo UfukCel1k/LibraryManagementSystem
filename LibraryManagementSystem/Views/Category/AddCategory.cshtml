@@ -1,0 +1,19 @@
+﻿@model LibraryManagementSystem.Models.Entity.TblCategory
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Kategori Ekleme</h2>
+
+@*Post işlemi sayfada bir butona tıklandığı zaman gerçekleştirecek.*@
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Kategori Adı</label>
+        <input type="text" class="form-control" name="Name"/>
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info" id="Btn1">Kaydet</button>
+    </div>
+</form>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="845a3f3889144143a82af223bc100921" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="DbLibModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblAuthor" Width="1.5" PointX="1.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblBook" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblCategory" Width="1.5" PointX="1.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblCezalar" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblKasa" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblMembers" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblStaff" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbLibModel.TblTransactions" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="DbLibModel.FK_TblBook_TblAuthor" ManuallyRouted="false" />
+        <AssociationConnector Association="DbLibModel.FK_TblBook_TblCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="DbLibModel.FK_TblTransactions_TblBook" ManuallyRouted="false" />
+        <AssociationConnector Association="DbLibModel.FK_TblCezalar_TblMembers" ManuallyRouted="false" />
+        <AssociationConnector Association="DbLibModel.FK_TblCezalar_TblTransactions" ManuallyRouted="false" />
+        <AssociationConnector Association="DbLibModel.FK_TblTransactions_TblMembers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
