@@ -1,0 +1,24 @@
+﻿@model LibraryManagementSystem.Models.Entity.TblAuthor
+@{
+    ViewBag.Title = "GetAuthor";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("UpdateAuthor", "Author", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(k => k.ID, new { @class = "form-control" })
+        <br />
+        <label>Yazar Adı</label>
+        @Html.TextBoxFor(k => k.Name, new { @class = "form-control" })
+        <br />
+        <label>Yazar Soyadı</label>
+        @Html.TextBoxFor(k => k.Surname, new { @class = "form-control" })
+        <br />
+        <label>Yazar Detay</label>
+        @Html.TextAreaFor(k => k.Detail, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+

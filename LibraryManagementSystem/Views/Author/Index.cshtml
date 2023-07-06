@@ -1,0 +1,31 @@
+﻿@using LibraryManagementSystem.Models.Entity
+@model List<TblAuthor>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Yazarlar</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Detay</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.Detail</td>
+            <td>@Html.ActionLink("Sil", "RemoveAuthor", new { id = item.ID }, new { @class = "btn btn-danger", onclick = "return confirm('Silmek İstiyor Musunuz?')" })</td>
+            <td><a href="/Author/GetAuthor/@item.ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Author/AddAuthor/" class="btn btn-primary">Yeni Yazar Ekle</a>
+
