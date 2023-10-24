@@ -1,0 +1,33 @@
+﻿@model LibraryManagementSystem.Models.Entity.TblBook
+
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@*Post işlemi sayfada bir butona tıklandığı zaman gerçekleştirecek.*@
+<form class="form-group" method="post">
+    <div></div>
+    <div style="margin-top:15px">
+        <label>Kitap Adı</label>
+        @Html.TextBoxFor(y => y.Name, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Kitap Kategori Soyadı</label>
+        @Html.TextBoxFor(y => y.Category, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Basım Yılı</label>
+        @Html.TextBoxFor(y => y.Date, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Yayınevi</label>
+        @Html.TextBoxFor(y => y.Publisher, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <label>Sayfa Sayısı</label>
+        @Html.TextBoxFor(y => y.Page, new { @class = "form-control" })
+    </div>
+    <br />
+    <button class="btn btn-success">Kitap Ekle</button>
+</form>
